@@ -1,0 +1,13 @@
+# RKI Fetcher
+
+## Introduction:
+
+A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany.
+
+## Usage:
+
+To be added.
+
+## License:
+
+To be added.
