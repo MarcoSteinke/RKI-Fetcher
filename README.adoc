@@ -2,7 +2,7 @@
 
 ## 🔥 Introduction:
 
-A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany.
+A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany. The information in this README is still a placeholder. The tool will be implemented soon.
 
 ## 🔧 Usage:
 
