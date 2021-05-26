@@ -8,15 +8,21 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 
 Add the following line to your HTML:
 
-  <script src="cdn.bestofcode.net/rkifetch"></script>
+```html
+<script src="cdn.bestofcode.net/rkifetch"></script>
+```
 
 Instantiate a new RKIFetcher:
 
-  const rkiFetcher = new RKIFetcher();
+```javascript 
+const rkiFetcher = new RKIFetcher();
+```
 
 You have the following options to manipulate the instance during instantiation:
 
-  const rkiFetcher = new RKIFetcher({city: "Düsseldorf"})
+```javascript
+const rkiFetcher = new RKIFetcher({city: "Düsseldorf", mode: "detailed"})
+```
 
 There are several other options to use (in the future).
 
