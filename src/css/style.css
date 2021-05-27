@@ -40,9 +40,17 @@ body {
     color: #007bff;
 }
 
-#inputFormTitle {
+#shareAndAPI {
+    display: none;
+}
+
+#inputFormTitle, #apiTitle {
     margin-top: 60px;
     color: #007bff;
+}
+
+.btn {
+    padding: 12px 64px 12px 64px;
 }
 
 #card-row {
@@ -61,6 +69,11 @@ body {
 
     #RKITarget {
         max-width: 80%;
+        margin: auto;
+    }
+
+    body {
+        width: 95%;
         margin: auto;
     }
   }

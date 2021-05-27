@@ -6,6 +6,7 @@ class QueryResultRenderer {
     renderTarget;
     cards = document.querySelectorAll(".card");
 
+
     constructor(renderTarget) {
         this.renderTarget = renderTarget;
 
@@ -29,6 +30,8 @@ class QueryResultRenderer {
         this.renderTarget.rows = Math.floor(this.renderTarget.innerHTML.length / this.renderTarget.cols + 5);
         
         this.cards.forEach(card => card.style.display = "block");
+
+        document.querySelector("#shareAndAPI").style.display = "block";
     }
 
     addClickToCloseButtons() {
@@ -46,7 +49,7 @@ class QueryResultRenderer {
 
         //
         document.querySelector("#landkreisImage").src = imageURL;
-        document.querySelector("#landkreisTitle").innerHTML = "Show RKI-statistics for " + city;
+        document.querySelector("#landkreisTitle").innerHTML = "Zeige Corona-Statistiken vom RKI an für " + city;
 
         document.body.style.background = "url(" + imageURL + ")";
         document.body.style.backgroundRepeat = "no-repeat";

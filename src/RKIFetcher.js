@@ -49,6 +49,10 @@ class RKIFetcher {
     static createRKIFetcherForLandkreis(landkreis) {
         return new RKIFetcher(landkreis);
     }
+
+    getAPIUrl() {
+        return this.#api;
+    }
 }
 
 let landkreise = [];
