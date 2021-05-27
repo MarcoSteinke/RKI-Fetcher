@@ -41,17 +41,20 @@ class QueryResultRenderer {
         }))
     }
 
-    render(imageURL, city, data) {
+    render(imageData, city, data) {
         // Refresh fields for faster UI reloads.
-        this.imageURL = imageURL;
+        this.imageURL = imageData.url;
         this.city = city;
         this.data = data;
 
         //
-        document.querySelector("#landkreisImage").src = imageURL;
+        document.querySelector("#landkreisImage").src = this.imageURL;
         document.querySelector("#landkreisTitle").innerHTML = "Zeige Corona-Statistiken vom RKI an für " + city;
 
-        document.body.style.background = "url(" + imageURL + ")";
+        document.querySelector("#imageLabel").innerHTML = [imageData.user, imageData.page].join(", ");
+        document.querySelector("#imageLabel").style.display = "block";
+
+        document.body.style.background = "url(" + this.imageURL + ")";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundAttachment = "fixed";

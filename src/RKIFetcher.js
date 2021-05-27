@@ -40,9 +40,9 @@ class RKIFetcher {
 
     async displayResult() {
         if(!this.data) await this.getInformation();
-        const imageURL = await LandkreisPictureQuery.requestPictureFromAPI(this.#landkreisPictureQuery);
+        const imageData = await LandkreisPictureQuery.requestPictureFromAPI(this.#landkreisPictureQuery);
 
-        this.#queryResultRenderer.render(imageURL, this.#city, this.data.properties);
+        this.#queryResultRenderer.render(imageData, this.#city, this.data.properties);
         this.#queryResultRenderer.showRenderTarget();
     }
 

@@ -40,7 +40,15 @@ body {
     color: #007bff;
 }
 
+#landkreisTitle {
+    margin-top: 48px;
+}
+
 #shareAndAPI {
+    display: none;
+}
+
+#imageLabel {
     display: none;
 }
 
