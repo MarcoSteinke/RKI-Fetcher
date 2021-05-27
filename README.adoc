@@ -1,4 +1,4 @@
-# RKI Fetcher
+# 📈 RKI Fetcher
 
 image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/image/screenshot.png[width=800]
 
