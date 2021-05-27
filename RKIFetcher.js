@@ -2,9 +2,9 @@
 
 class RKIFetcher {
 
-    /*final*/ #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
-    /*final*/ #city;
-    /*final*/ #renderTarget = document.querySelector("#RKITarget");
+    /*final String*/ #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
+    /*final String*/ #city;
+    /*final Element*/ #renderTarget = document.querySelector("#RKITarget");
     /*List(Feature)*/ data;
 
     constructor(city) {
