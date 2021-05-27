@@ -36,7 +36,10 @@
         <form method="get" action="">
             <div class="form-group">
                 <label for="landkreis">Landkreis:</label>
-                <input id="landkreis" class="form-control" type="text" name="landkreis">
+                <input id="landkreis" list="landkreise" class="form-control" type="text" name="landkreis">
+                <datalist id="landkreise">
+                    
+                </datalist>
             </div>
             <button class="btn btn-primary" type="submit" id="display">Anzeigen</button>
         </form>
@@ -47,6 +50,7 @@
             <div class="card">
                 <div class="card-header">
                     Header
+                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Title</h5>
@@ -61,6 +65,7 @@
             <div class="card">
                 <div class="card-header">
                     Header
+                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Title</h5>
@@ -75,6 +80,7 @@
             <div class="card">
                 <div class="card-header">
                     Header
+                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Title</h5>
@@ -88,6 +94,11 @@
         
     </div>
     <script>
+
+        waitForLandkreise();
+
+        
+
         const submitForm = document.querySelector("#display");
         const landkreisInput = document.querySelector("#landkreis");
         submitForm.addEventListener("click", function(e) {

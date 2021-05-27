@@ -6,6 +6,7 @@ class RKIFetcher {
     /*private String*/ #city;
     /*private Element*/ #renderTarget = document.querySelector("#RKITarget");
     /*List(Feature)*/ data;
+    #cards = document.querySelectorAll(".card");
 
     constructor(city) {
         if(city) {
@@ -16,11 +17,12 @@ class RKIFetcher {
             document.body.insertAdjacentHTML("beforeend", "<button class=\"btn btn-danger\" type=\"button\">You have to annotate any object with id=\"#RKITarget\" !</button>");
         }
         this.hideRenderTarget();
+        this.#cards.forEach(card => card.style.display = "none");
     }
 
-    getAllLandkreise() {
-        const landkreise = new Set();
-        await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.add(feature.properties.GEN)));
+    async getAllLandkreise() {
+        const landkreise = [];
+        await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
 
         return landkreise;
     }
@@ -31,6 +33,8 @@ class RKIFetcher {
 
     showRenderTarget() {
         this.#renderTarget.style.display = "block";
+        
+        this.#cards.forEach(card => card.style.display = "block");
     }
 
     async getInformation() {
@@ -51,4 +55,16 @@ class RKIFetcher {
     static createRKIFetcherForLandkreis(landkreis) {
         return new RKIFetcher(landkreis);
     }
+}
+
+let landkreise = [];
+        
+
+async function waitForLandkreise() {
+    landkreise = await new RKIFetcher().getAllLandkreise();
+    console.log(landkreise);
+
+    landkreise.forEach(landkreis => {
+        document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
+    })
 }
