@@ -9,6 +9,8 @@ class QueryResultRenderer {
     constructor(renderTarget) {
         this.renderTarget = renderTarget;
 
+        this.addClickToCloseButtons();
+
         if(!this.renderTarget) {
             console.warn("No RKITarget found. Please add id=\"RKITarget\" to any object to be able to display the results.");
             document.body.insertAdjacentHTML("beforeend", "<button class=\"btn btn-danger\" type=\"button\">You have to annotate any object with id=\"#RKITarget\" !</button>");
@@ -29,6 +31,13 @@ class QueryResultRenderer {
         this.cards.forEach(card => card.style.display = "block");
     }
 
+    addClickToCloseButtons() {
+        document.querySelectorAll(".close-card").forEach(button => button.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.target.parentNode.parentNode.parentNode.style.display = "none";
+        }))
+    }
+
     render(imageURL, city, data) {
         // Refresh fields for faster UI reloads.
         this.imageURL = imageURL;
@@ -38,5 +47,10 @@ class QueryResultRenderer {
         //
         document.querySelector("#landkreisImage").src = imageURL;
         document.querySelector("#landkreisTitle").innerHTML = "Show RKI-statistics for " + city;
+
+        document.body.style.background = "url(" + imageURL + ")";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
     }
 }

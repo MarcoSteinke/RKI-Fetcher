@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>RKI Fetcher Demo</title>
+    <title>WhatAboutUs | Aktuelle Statistiken, schnell und einfach!</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,8 +22,8 @@
       
   </style>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand text-white">RKI Fetcher</a>
+    <nav id="nav-top" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand text-white">WhatAboutUs</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,15 +37,17 @@
     </nav>
 
     <div class="container">
-        <h4 id="title">The following textarea shows the fetched data:</h4>
+        <h1 id="title">WhatAboutUs</h1>
+        <h6>Aktuelle Statistiken, schnell und einfach!</h6>
         <hr>
         <form method="get" action="">
             <div class="form-group">
-                <label for="landkreis">Landkreis:</label>
-                <input id="landkreis" list="landkreise" class="form-control" type="text" name="landkreis">
+                <h5 id="inputFormTitle">Wähle deinen Landkreis aus:</h5>
+                <input id="landkreis" list="landkreise" class="form-control pulse" type="text" name="landkreis">
                 <datalist id="landkreise">
                     
                 </datalist>
+                <label for="landkreis">Tip: The input supports autocomplete. Doubleclick to toggle autocomplete.</label>
             </div>
             <button class="btn btn-primary" type="submit" id="display">Anzeigen</button>
         </form>
@@ -58,7 +60,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Header
+                        Informationen
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">
@@ -73,7 +75,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Header
+                        Letzte 7 Tage
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">
@@ -88,7 +90,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Header
+                        Insgesamt
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">

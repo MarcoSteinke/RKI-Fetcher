@@ -13,6 +13,10 @@ class RKIFetcher {
         if(city) {
             this.#city = city;
         }
+        document.querySelector("#landkreis").addEventListener("click", function(e) {
+            e.target.value = "";
+            e.target.click();
+        })
         this.#landkreisPictureQuery = new LandkreisPictureQuery(city);
         this.#cards.forEach(card => card.style.display = "none");
         this.#queryResultRenderer = new QueryResultRenderer(document.querySelector("#RKITarget"));
