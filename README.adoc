@@ -6,9 +6,9 @@ image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/i
 
 A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany. 
 
-1⃣ Select your `district`
-2⃣ Check the latest information about your surrounding
-3⃣ Share the information with your friends, family or coworkers
+1️⃣ Select your `district`
+2️⃣ Check the latest information about your surrounding
+3️⃣ Share the information with your friends, family or coworkers
 
 ## 🔧 Usage:
 
