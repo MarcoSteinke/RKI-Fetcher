@@ -1,6 +1,6 @@
 # RKI Fetcher
 
-image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/image/screenshot.png[width=600]
+image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/image/screenshot.png[width=800]
 
 ## 🔥 Introduction:
 
