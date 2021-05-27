@@ -18,3 +18,7 @@ body {
 #card-row {
     padding: 24px;
 }
+
+#RKITarget {
+    display: none;
+}
