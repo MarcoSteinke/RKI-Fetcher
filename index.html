@@ -9,19 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="RKIFetcher.js"></script>
   </head>
   <style>
-      .card>*, .card {
-          border-radius: 0px !important;
-      }
-
-      .card-header {
-          background-color: #343a40 !important;
-          color: white;
-      }
+      
   </style>
-  <body style="text-align: center;">
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand text-white">RKI Fetcher</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +31,7 @@
     </nav>
 
     <div class="container">
-        <h4 style="margin-top: 100px;">The following textarea shows the fetched data:</h4>
+        <h4 id="title">The following textarea shows the fetched data:</h4>
         <hr>
         <form method="get" action="">
             <div class="form-group">
@@ -48,7 +42,7 @@
         </form>
         <textarea id="RKITarget" cols="100" style="background-color: #f1f1f1; border: none; margin: auto;"></textarea>
     </div>
-    <div class="row" style="padding: 24px;">
+    <div class="row" id="card-row">
         <div class="col">
             <div class="card">
                 <div class="card-header">
