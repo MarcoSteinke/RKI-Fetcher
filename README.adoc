@@ -8,9 +8,9 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 
 1️⃣ Select your `district`
 
-2️⃣ Check the latest information about your surrounding
+2️⃣ `Check` the latest information about your surrounding
 
-3️⃣ Share the information with your friends, family or coworkers
+3️⃣ `Share` the information with your friends, family or coworkers
 
 ## 🔧 Usage:
 
