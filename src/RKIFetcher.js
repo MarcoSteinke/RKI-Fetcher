@@ -6,6 +6,7 @@ class RKIFetcher {
     /*private String*/ #city;
     /*private Element*/ #renderTarget = document.querySelector("#RKITarget");
     /*List(Feature)*/ data;
+    /*private LandkreisPictureQuery*/; #landkreisPictureQuery;
     #cards = document.querySelectorAll(".card");
 
     constructor(city) {
@@ -16,6 +17,7 @@ class RKIFetcher {
             console.warn("No RKITarget found. Please add id=\"RKITarget\" to any object to be able to display the results.");
             document.body.insertAdjacentHTML("beforeend", "<button class=\"btn btn-danger\" type=\"button\">You have to annotate any object with id=\"#RKITarget\" !</button>");
         }
+        this.#landkreisPictureQuery = new LandkreisPictureQuery(city);
         this.hideRenderTarget();
         this.#cards.forEach(card => card.style.display = "none");
     }
