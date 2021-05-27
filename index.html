@@ -26,13 +26,26 @@
         </div>
     </nav>
 
-    <h4 style="margin-top: 100px;">The following textarea shows the fetched data:</h4>
     <div class="container">
+        <h4 style="margin-top: 100px;">The following textarea shows the fetched data:</h4>
+        <hr>
+        <form method="get" action="">
+            <div class="form-group">
+                <label for="landkreis">Landkreis:</label>
+                <input id="landkreis" class="form-control" type="text" name="landkreis">
+            </div>
+            <button class="btn btn-primary" type="submit" id="display">Anzeigen</button>
+        </form>
         <textarea id="RKITarget" cols="100" style="background-color: #f1f1f1; border: none; margin: auto;"></textarea>
     </div>
     <script>
-        const rkiFetcher = new RKIFetcher("Düsseldorf");
-        rkiFetcher.displayResult();
+        const submitForm = document.querySelector("#display");
+        const landkreisInput = document.querySelector("#landkreis");
+        submitForm.addEventListener("click", function(e) {
+            e.preventDefault();
+            const fetcher = new RKIFetcher(landkreisInput.value);
+            fetcher.displayResult();
+        })
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

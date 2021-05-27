@@ -40,4 +40,8 @@ class RKIFetcher {
         this.#renderTarget.rows = Math.floor(this.#renderTarget.innerHTML.length / this.#renderTarget.cols + 5);
         this.showRenderTarget();
     }
+
+    static createRKIFetcherForLandkreis(landkreis) {
+        return new RKIFetcher(landkreis);
+    }
 }
