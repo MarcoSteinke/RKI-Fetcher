@@ -18,6 +18,13 @@ class RKIFetcher {
         this.hideRenderTarget();
     }
 
+    getAllLandkreise() {
+        const landkreise = new Set();
+        await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.add(feature.properties.GEN)));
+
+        return landkreise;
+    }
+
     hideRenderTarget() {
         this.#renderTarget.style.display = "none";
     }
