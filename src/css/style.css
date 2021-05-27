@@ -37,10 +37,12 @@ body {
 
 #landkreisImage, #landkreisTitle, #apiReturnTitle {
     margin: 24px;
+    color: #007bff;
 }
 
 #inputFormTitle {
     margin-top: 60px;
+    color: #007bff;
 }
 
 #card-row {
