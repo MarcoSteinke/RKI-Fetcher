@@ -53,57 +53,81 @@
         <br>
         <img id="landkreisImage" src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
         <h4 id="landkreisTitle"></h4>
+
+        <div class="row" id="card-row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Header
+                        <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Content</p>
+                    </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Header
+                        <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Content</p>
+                    </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Header
+                        <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Content</p>
+                    </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <h4 id="apiReturnTitle">What the API returned:</h4>
+        <textarea id="RKITarget" cols="100" style="background-color: #f1f1f1; border: none; margin: auto;"></textarea>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" id="bottomnav">
+            <a class="navbar-brand text-white">RKI Fetcher</a>
+            <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="my-nav" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" target="_blank" href="https://www.github.com/MarcoSteinke/RKI-Fetcher">GitHub <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://www.github.com/MarcoSteinke/RKI-Fetcher/issues/new">Request feature<span class="sr-only"></span></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
     </div>
-    <div class="row" id="card-row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Header
-                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title</h5>
-                    <p class="card-text">Content</p>
-                </div>
-                <div class="card-footer">
-                    Footer
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Header
-                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title</h5>
-                    <p class="card-text">Content</p>
-                </div>
-                <div class="card-footer">
-                    Footer
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Header
-                    <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title</h5>
-                    <p class="card-text">Content</p>
-                </div>
-                <div class="card-footer">
-                    Footer
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    <h4 id="apiReturnTitle">What the API returned:</h4>
-    <textarea id="RKITarget" cols="100" style="background-color: #f1f1f1; border: none; margin: auto;"></textarea>
+    
+    
     <script>
 
         waitForLandkreise();
