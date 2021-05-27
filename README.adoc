@@ -1,5 +1,7 @@
 # RKI Fetcher
 
+image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/image/screenshot.png[width=400]
+
 ## 🔥 Introduction:
 
 A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany. The information in this README is still a placeholder. The tool will be implemented soon.
