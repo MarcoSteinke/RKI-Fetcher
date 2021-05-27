@@ -14,6 +14,6 @@ class LandkreisPictureQuery {
             .then(res => res.json())
             .then(json => result = (json.totalHits > 0) ? json.hits : null);
 
-        return result != null ? result[0].pageURL : null;
+        return result != null ? result[Math.floor(Math.random() * result.length)].webformatURL : null;
     }
 }

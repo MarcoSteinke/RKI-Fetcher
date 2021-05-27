@@ -19,10 +19,14 @@ body {
     margin-top: 100px;
 }
 
+#landkreisImage, #landkreisTitle, #apiReturnTitle {
+    margin: 24px;
+}
+
 #card-row {
     padding: 24px;
 }
 
-#RKITarget {
+#RKITarget, #apiReturnTitle {
     display: none;
 }
