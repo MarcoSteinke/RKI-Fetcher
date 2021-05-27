@@ -36,12 +36,10 @@ class RKIFetcher {
 
     async displayResult() {
         if(!this.data) await this.getInformation();
-        this.#queryResultRenderer.renderTarget.innerHTML = JSON.stringify(this.data.properties);
-        this.#queryResultRenderer.renderTarget.rows = Math.floor(this.#queryResultRenderer.renderTarget.innerHTML.length / this.#queryResultRenderer.renderTarget.cols + 5);
-        this.#queryResultRenderer.showRenderTarget();
-
         const imageURL = await LandkreisPictureQuery.requestPictureFromAPI(this.#landkreisPictureQuery);
+
         this.#queryResultRenderer.render(imageURL, this.#city, this.data.properties);
+        this.#queryResultRenderer.showRenderTarget();
     }
 
     static createRKIFetcherForLandkreis(landkreis) {

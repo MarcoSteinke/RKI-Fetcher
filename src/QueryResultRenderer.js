@@ -22,6 +22,9 @@ class QueryResultRenderer {
     showRenderTarget() {
         this.renderTarget.style.display = "block";
         document.querySelector("#apiReturnTitle").style.display = "block";
+
+        this.renderTarget.innerHTML = JSON.stringify(this.data);
+        this.renderTarget.rows = Math.floor(this.renderTarget.innerHTML.length / this.renderTarget.cols + 5);
         
         this.cards.forEach(card => card.style.display = "block");
     }
