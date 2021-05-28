@@ -152,15 +152,16 @@
         })
 
         if(window.location.href.split("?")[1].split("=")[0] == "share") {
-            landkreisInput.value = RKIFetcher.transformParameterToLandkreis();
+            landkreisInput.value = RKIFetcher.URLToLandkreis(window.location.href.split("?")[1].split("=")[1]);
             submitForm.click();
+            
         }
 
         document.querySelector("#shareButton").addEventListener("click", function(e) {
             e.preventDefault();
             document.querySelector("#shareUrl").style.display = "block";
             document.querySelector("#shareLabel").style.display = "block";
-            //document.querySelector("#shareUrl").value = window.location.href;
+            document.querySelector("#shareUrl").value = window.location.href;
         })
     </script>
     <!-- Optional JavaScript -->

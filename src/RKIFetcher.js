@@ -35,17 +35,27 @@ class RKIFetcher {
           if(feature.properties.GEN == this.#city) {
             this.data = feature;
             console.log(this.data);
-            window.location.href = window.location.href.split("?")[0] + "?share=" + feature.properties.GEN
-                .replace("ä", "#1")
-                .replace("Ä", "#2")
-                .replace("ö", "#3")
-                .replace("Ö", "#4")
-                .replace("ü", "#5")
-                .replace("Ü", "#6")
-                .replace(" ", "#7")
-                .replace("-", "#8");
+            window.location.href = window.location.href.split("?")[0] + "?share=" + RKIFetcher.landkreisToURL(feature.properties.GEN);
           }
         }))
+    }
+
+    static landkreisToURL(landkreis) {
+        let result = "";
+        for(let i = 0; i < landkreis.length; i++) {
+          result += "#" + landkreis.charCodeAt(i);
+        }
+      
+        return result;
+    }
+
+    static URLToLandkreis(landkreis) {
+        let result = "";
+        for(let i = 1; i < landkreis.split("#").length; i++) {
+          result += String.fromCharCode(landkreis.split("#")[i]);
+        }
+      
+      return result;
     }
 
     async displayResult() {
@@ -57,8 +67,10 @@ class RKIFetcher {
     }
 
     static transformParameterToLandkreis() {
-        return window.location.href.split("?")[1]
+        return window.location.href
+                .split("?")[1]
                 .replace("share=", "")
+                .split("&")[0]
                 .replace("#1", "ä")
                 .replace("#2", "Ä")
                 .replace("#3", "ö")
