@@ -58,5 +58,20 @@ class QueryResultRenderer {
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundAttachment = "fixed";
+
+        document.querySelector("#landkreisResultName").innerHTML = city;
+        document.querySelector("#landkreisResultAnnotation").innerHTML = data.BEZ;
+        document.querySelector("#landkreisResultState").innerHTML = data.BL;
+        document.querySelector("#landkreisResultPopulation").innerHTML = "Einwohnerzahl: " + data.EWZ;
+
+        document.querySelector("#last7cases").innerHTML = "Fälle: " + data.cases7_lk;
+        document.querySelector("#last7cases100k").innerHTML = "Inzidenz: " + data.cases7_per_100k_txt;
+        document.querySelector("#last7deaths").innerHTML = "Todesfälle: " + data.death7_lk;
+
+
+        document.querySelector("#totalcases").innerHTML = "Fälle: " + data.cases;
+        document.querySelector("#totalcases100k").innerHTML = "Todesfälle: " + data.deaths;
+        document.querySelector("#totaldeaths").innerHTML = "Überlebensrate: " +  (Number.parseInt((100 - data.death_rate) * 100) / 100) + "%" ;
+        
     }
 }

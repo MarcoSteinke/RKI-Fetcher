@@ -34,6 +34,16 @@ class RKIFetcher {
         await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => {
           if(feature.properties.GEN == this.#city) {
             this.data = feature;
+            console.log(this.data);
+            window.location.href = window.location.href.split("?")[0] + "?share=" + feature.properties.GEN
+                .replace("ä", "#1")
+                .replace("Ä", "#2")
+                .replace("ö", "#3")
+                .replace("Ö", "#4")
+                .replace("ü", "#5")
+                .replace("Ü", "#6")
+                .replace(" ", "#7")
+                .replace("-", "#8");
           }
         }))
     }
@@ -44,6 +54,19 @@ class RKIFetcher {
 
         this.#queryResultRenderer.render(imageData, this.#city, this.data.properties);
         this.#queryResultRenderer.showRenderTarget();
+    }
+
+    static transformParameterToLandkreis() {
+        return window.location.href.split("?")[1]
+                .replace("share=", "")
+                .replace("#1", "ä")
+                .replace("#2", "Ä")
+                .replace("#3", "ö")
+                .replace("#4", "Ö")
+                .replace("#5", "ü")
+                .replace("#6", "Ü")
+                .replace("#7", " ")
+                .replace("#8", "-");
     }
 
     static createRKIFetcherForLandkreis(landkreis) {

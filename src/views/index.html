@@ -65,11 +65,10 @@
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text">Content</p>
-                    </div>
-                    <div class="card-footer">
-                        Footer
+                        <h5 class="card-title" id="landkreisResultName">Title</h5>
+                        <p class="card-text" id="landkreisResultAnnotation">Content</p>
+                        <p class="card-text" id="landkreisResultState">Content</p>
+                        <p class="card-text" id="landkreisResultPopulation">Content</p>
                     </div>
                 </div>
             </div>
@@ -80,11 +79,9 @@
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text">Content</p>
-                    </div>
-                    <div class="card-footer">
-                        Footer
+                        <p class="card-text" id="last7cases">Content</p>
+                        <p class="card-text" id="last7cases100k">Content</p>
+                        <p class="card-text" id="last7deaths">Content</p>
                     </div>
                 </div>
             </div>
@@ -95,11 +92,9 @@
                         <a class="close-card" href="#" rel="noopener noreferrer"><i class="fa fa-window-close" aria-hidden="true" style="color: white; float: right;"></i></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text">Content</p>
-                    </div>
-                    <div class="card-footer">
-                        Footer
+                        <p class="card-text" id="totalcases">Content</p>
+                        <p class="card-text" id="totalcases100k">Content</p>
+                        <p class="card-text" id="totaldeaths">Content</p>
                     </div>
                 </div>
             </div>
@@ -108,8 +103,11 @@
 
         <div id="shareAndAPI">
             <h6>Teile dieses Ergebnis mit deinen Freunden oder deiner Familie:</h6>
-            <button class="btn btn-primary" type="button" style="padding-left: 64px; padding-right: 64px;"><i class="fa fa-users" aria-hidden="true"></i> Teilen</button>
-    
+            <button class="btn btn-primary" type="button" style="padding-left: 64px; padding-right: 64px;" id="shareButton"><i class="fa fa-users" aria-hidden="true"></i> Teilen</button>
+            <br>
+            <br>
+            <label for="shareUrl" id="shareLabel">Kopiere und teile diesen Link!</label>
+            <input class="form-control" type="text" name="shareUrl" id="shareUrl">
             <hr>
     
             <h4 id="apiReturnTitle">Ergebnis der API:</h4>
@@ -145,14 +143,24 @@
 
         waitForLandkreise();
 
-        
-
         const submitForm = document.querySelector("#display");
         const landkreisInput = document.querySelector("#landkreis");
         submitForm.addEventListener("click", function(e) {
             e.preventDefault();
             const fetcher = new RKIFetcher(landkreisInput.value);
             fetcher.displayResult();
+        })
+
+        if(window.location.href.split("?")[1].split("=")[0] == "share") {
+            landkreisInput.value = RKIFetcher.transformParameterToLandkreis();
+            submitForm.click();
+        }
+
+        document.querySelector("#shareButton").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector("#shareUrl").style.display = "block";
+            document.querySelector("#shareLabel").style.display = "block";
+            //document.querySelector("#shareUrl").value = window.location.href;
         })
     </script>
     <!-- Optional JavaScript -->

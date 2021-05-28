@@ -84,7 +84,17 @@ body {
         width: 95%;
         margin: auto;
     }
+
+    .card {
+        width: 256px;
+        margin: auto;
+        margin-top: 24px;
+    }
   }
+
+#shareUrl, #shareLabel {
+    display: none;
+}
 
 
 
