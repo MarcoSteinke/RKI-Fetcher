@@ -10,7 +10,7 @@ html {
     padding: 18px;
     -webkit-box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57); 
     box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57);
-    background: white;
+    background: #f1f1f1;
 }
 
 .card {
@@ -52,9 +52,16 @@ body {
     display: none;
 }
 
-#inputFormTitle, #apiTitle {
+#inputFormTitle, #apiTitle, #hotspotTitle, #safestTitle {
     margin-top: 60px;
+    margin-bottom: 24px;
     color: #007bff;
+}
+
+.card-deck {
+    margin: 8px;
+    padding: 8px;
+    overflow-x: scroll;
 }
 
 .btn {
@@ -91,6 +98,25 @@ body {
         margin-top: 24px;
     }
   }
+
+.hotspot {
+    border-radius: 25px !important;
+    height: 256;
+    width: 256px;
+    transition-duration: 0.3s;
+}
+
+.hotspot:hover {
+    -webkit-box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57); 
+    box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57);
+    transform: translateY(-4px);
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.card-img-top {
+    border-radius: 25px 25px 0px 0px !important;
+}
 
 #shareUrl, #shareLabel {
     display: none;
