@@ -36,6 +36,12 @@ const rkiFetcher = new RKIFetcher({city: "Düsseldorf", mode: "detailed"})
 
 There are several other options to use (in the future).
 
+## Future features:
+
+* [ ] current Corona Hotspots
+* [ ] current safest districts
+* [ ] n closest districts
+
 ## ⚖ License:
 
 MarcoSteinke/RKI-Fetcher is licensed under the MIT License
