@@ -38,6 +38,13 @@ class RKIFetcher {
         RKIFetcher.incidency = Number.parseInt((RKIFetcher.storedData.map(landkreis => landkreis.properties.cases7_per_100k).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
     }
 
+    findNeighbourDistricts() {
+        return RKIFetcher
+            .storedData
+            .sort(function(a,b) { return Math.abs(a.properties.OBJECTID - this.data.properties.OBJECTID) - Math.abs(b.properties.OBJECTID - this.data.properties.OBJECTID)})
+            .slice(0,5);
+    }
+
     
     static async getAllLandkreiseAsObjects() {
         if(RKIFetcher.storedData.length < 1) {
