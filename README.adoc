@@ -41,6 +41,7 @@ There are several other options to use (in the future).
 * [ ] current Corona Hotspots
 * [ ] current safest districts
 * [ ] n closest districts
+* [ ] frontend rendering component
 
 ## ⚖ License:
 
