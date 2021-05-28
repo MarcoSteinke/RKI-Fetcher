@@ -68,6 +68,14 @@ class RKIFetcher {
         return result;
     }
 
+    static findHotspots() {
+        return RKIFetcher.storedData.sort(function(a,b) { return b.properties.cases7_per_100k - a.properties.cases7_per_100k }).slice(0,5);
+    }
+
+    static findSafestAreas() {
+        return RKIFetcher.storedData.sort(function(a,b) { return a.properties.cases7_per_100k - b.properties.cases7_per_100k }).slice(0,5);
+    }
+
     static URLToLandkreis(landkreis) {
         let result = "";
         for(let i = 1; i < landkreis.split("#").length; i++) {
