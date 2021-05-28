@@ -2,11 +2,13 @@
 
 class RKIFetcher {
 
-    /*private String*/ #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
+    /*private String*/ static #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
     /*private String*/ #city;
     /*List(Feature)*/ data;
     /*private LandkreisPictureQuery*/; #landkreisPictureQuery;
     /*private QueryResultRenderer*/ #queryResultRenderer;
+    static incidency;
+    static storedData = [];
     #cards = document.querySelectorAll(".card");
 
     constructor(city) {
@@ -23,15 +25,32 @@ class RKIFetcher {
         this.#queryResultRenderer.hideRenderTarget();
     }
 
+
+
     async getAllLandkreise() {
         const landkreise = [];
-        await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+        await fetch(RKIFetcher.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
 
         return landkreise;
     }
 
+    static calculateIncidency() {
+        RKIFetcher.incidency = Number.parseInt((RKIFetcher.storedData.map(landkreis => landkreis.properties.cases7_per_100k).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
+    }
+
+    
+    static async getAllLandkreiseAsObjects() {
+        if(RKIFetcher.storedData.length < 1) {
+            await fetch(RKIFetcher.#api)
+                .then(res => res.json())
+                .then(json => json.features.forEach(feature => this.storedData.push(feature)));
+        }
+
+        RKIFetcher.calculateIncidency();
+    }
+
     async getInformation() {
-        await fetch(this.#api).then(res => res.json()).then(json => json.features.forEach(feature => {
+        await fetch(RKIFetcher.#api).then(res => res.json()).then(json => json.features.forEach(feature => {
           if(feature.properties.GEN == this.#city) {
             this.data = feature;
             console.log(this.data);
@@ -86,12 +105,13 @@ class RKIFetcher {
     }
 
     getAPIUrl() {
-        return this.#api;
+        return RKIFetcher.#api;
     }
 }
 
 let landkreise = [];
-        
+
+RKIFetcher.getAllLandkreiseAsObjects();
 
 async function waitForLandkreise() {
     landkreise = await new RKIFetcher().getAllLandkreise();
