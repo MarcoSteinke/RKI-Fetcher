@@ -8,6 +8,9 @@ class RKIFetcher {
     /*private LandkreisPictureQuery*/; #landkreisPictureQuery;
     /*private QueryResultRenderer*/ #queryResultRenderer;
     static incidency;
+    static totalCases;
+    static totalDeaths;
+    static survivalRate;
     static storedData = [];
     #cards = document.querySelectorAll(".card");
 
@@ -59,6 +62,9 @@ class RKIFetcher {
         }
 
         RKIFetcher.calculateIncidency();
+        RKIFetcher.totalCases = RKIFetcher.calculateTotalCases();
+        RKIFetcher.totalDeaths = RKIFetcher.calculateTotalDeaths();
+        RKIFetcher.survivalRate = RKIFetcher.calculateAverageSurvivalRate();
     }
 
     async getInformation() {
@@ -82,6 +88,18 @@ class RKIFetcher {
 
     static findHotspots() {
         return RKIFetcher.storedData.sort(function(a,b) { return b.properties.cases7_per_100k - a.properties.cases7_per_100k }).slice(0,5);
+    }
+
+    static calculateTotalCases() {
+        return RKIFetcher.storedData.map(landkreis => landkreis.properties.cases).reduce((a,b) => a+b)
+    }
+
+    static calculateTotalDeaths() {
+        return RKIFetcher.storedData.map(landkreis => landkreis.properties.deaths).reduce((a,b) => a+b)
+    }
+
+    static calculateAverageSurvivalRate() {
+        return Number.parseInt((RKIFetcher.storedData.map(landkreis => (Number.parseInt((100 - landkreis.properties.death_rate) * 100) / 100)).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
     }
 
     static findSafestAreas() {
@@ -146,5 +164,7 @@ async function waitForLandkreise() {
     })
 
     QueryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
-        QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
+    QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
+
+    QueryResultRenderer.showCountryStatistics();
 }

@@ -138,6 +138,13 @@ class QueryResultRenderer {
         });
     }
 
+    static showCountryStatistics() {
+        document.querySelector("#countryIncidency").innerHTML = "Inzidenz: " + RKIFetcher.incidency;
+        document.querySelector("#countryCases").innerHTML = "Fälle: " + RKIFetcher.totalCases;
+        document.querySelector("#countryDeaths").innerHTML = "Todesfälle :" + RKIFetcher.totalDeaths;
+        document.querySelector("#countrySurvivalRate").innerHTML = "Überlebensrate: " + RKIFetcher.survivalRate;
+    }
+
     static async updateSafest(safest) {
         const safestHook = document.querySelector("#safest");
 
