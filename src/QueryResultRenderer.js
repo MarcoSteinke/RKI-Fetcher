@@ -72,6 +72,7 @@ class QueryResultRenderer {
         document.querySelector("#totalcases").innerHTML = "Fälle: " + data.cases;
         document.querySelector("#totalcases100k").innerHTML = "Todesfälle: " + data.deaths;
         document.querySelector("#totaldeaths").innerHTML = "Überlebensrate: " +  (Number.parseInt((100 - data.death_rate) * 100) / 100) + "%" ;
+        document.querySelector("#showAfterwards").style.display = "block";
         
     }
 
@@ -106,7 +107,7 @@ class QueryResultRenderer {
         });
     }
 
-    async updateHotSpots(hotspots) {
+    static async updateHotSpots(hotspots) {
         const hotspotsHook = document.querySelector("#hotspots");
 
         document.querySelectorAll(".hotspot").forEach(hotspot => hotspot.remove());
@@ -137,7 +138,7 @@ class QueryResultRenderer {
         });
     }
 
-    async updateSafest(safest) {
+    static async updateSafest(safest) {
         const safestHook = document.querySelector("#safest");
 
         document.querySelectorAll(".safe").forEach(safe => safe.remove());
@@ -175,6 +176,12 @@ const asyncHandler = fn => (req, res, next) =>
     .catch(next)
 
 function update(data) {
+
+    if(!window.location.href.includes('?')) {
+        window.location.href = window.location.href.split("?")[0] + "?share=" + RKIFetcher.landkreisToURL(data);
+        return;
+    }
+    
     window.location.href = window.location.href.split("?")[0] + "?share=" + RKIFetcher.landkreisToURL(data);
-    location.reload();
+    window.location.reload();
 }

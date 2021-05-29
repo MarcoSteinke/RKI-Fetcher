@@ -105,8 +105,8 @@ class RKIFetcher {
         this.#queryResultRenderer.showRenderTarget();
 
         this.#queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
-        this.#queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
-        this.#queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
+        //this.#queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
+        //this.#queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
     }
 
     static transformParameterToLandkreis() {
@@ -144,4 +144,7 @@ async function waitForLandkreise() {
     landkreise.forEach(landkreis => {
         document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
     })
+
+    QueryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
+        QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
 }

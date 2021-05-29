@@ -113,6 +113,10 @@ body {
     }
   }
 
+#showAfterwards {
+    display: none;
+}
+
 .hotspot, .neighbour, .safe {
     border-radius: 25px !important;
     height: 256;

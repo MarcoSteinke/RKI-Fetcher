@@ -32,6 +32,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Start <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Start <span class="sr-only">(current)</span></a>
+                </li>
+                
             </ul>
         </div>
     </nav>
@@ -43,7 +47,7 @@
         <form method="get" action="">
             <div class="form-group">
                 <h5 id="inputFormTitle">Wähle deinen Landkreis aus:</h5>
-                <input id="landkreis" list="landkreise" class="form-control pulse" type="text" name="landkreis">
+                <input id="landkreis" list="landkreise" class="form-control" type="text" name="landkreis">
                 <datalist id="landkreise">
                     
                 </datalist>
@@ -53,6 +57,7 @@
         </form>
         <hr>
         <br>
+        <h1><i class="fa fa-arrow-circle-down text-secondary pulse" aria-hidden="true"></i></h1>
         <img id="landkreisImage" src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
         <label for="landKreisImage" id="imageLabel"></label>
         <h4 id="landkreisTitle"></h4>
@@ -117,7 +122,11 @@
                     
                     
                 </div>
-                <h4 id="hotspotTitle">Derzeitige Corona Hotspots:</h4>
+                
+            </div>
+        </div>
+
+        <h4 id="hotspotTitle">Derzeitige Corona Hotspots:</h4>
                 <div class="card-deck" id="hotspots">
                     
                     
@@ -131,8 +140,8 @@
                 </div>
     
                 <hr>
-            </div>
-    
+
+        <div id="showAfterwards">
             <h4 id="apiReturnTitle">Ergebnis der API:</h4>
             <textarea id="RKITarget" cols="100" style="background-color: white; border: none; margin: auto;"></textarea>
     
@@ -173,11 +182,14 @@
             fetcher.displayResult();
         })
 
-        if(window.location.href.split("?")[1].split("=")[0] == "share") {
-            landkreisInput.value = RKIFetcher.URLToLandkreis(window.location.href.split("?")[1].split("=")[1]);
-            submitForm.click();
-            
+        if(window.location.href.includes("?")) {
+            if(window.location.href.split("?")[1].split("=")[0] == "share") {
+                landkreisInput.value = RKIFetcher.URLToLandkreis(window.location.href.split("?")[1].split("=")[1]);
+                submitForm.click();
+                
+            }
         }
+
 
         document.querySelector("#shareButton").addEventListener("click", function(e) {
             e.preventDefault();
@@ -185,6 +197,8 @@
             document.querySelector("#shareLabel").style.display = "block";
             document.querySelector("#shareUrl").value = window.location.href;
         })
+
+        
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
