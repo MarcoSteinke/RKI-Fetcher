@@ -74,4 +74,40 @@ class QueryResultRenderer {
         document.querySelector("#totaldeaths").innerHTML = "Überlebensrate: " +  (Number.parseInt((100 - data.death_rate) * 100) / 100) + "%" ;
         
     }
+
+    async updateNeighbours(neighbours) {
+        const neighboursHook = document.querySelector("#neighbours");
+
+        document.querySelectorAll(".neighbour").forEach(neighbour => neighbour.remove());
+
+        let pictures = [];
+
+        for(let i = 0; i < neighbours.length; i++) {
+            let pic = await LandkreisPictureQuery.requestPictureFromAPI(new LandkreisPictureQuery(neighbours[i].properties.GEN));
+            pictures.push(pic);
+        }
+
+        let iterator = 0;
+
+        neighbours.forEach(neighbour => {
+
+            let picture = pictures[iterator++];
+
+            neighboursHook.insertAdjacentHTML(
+                "beforeend", 
+                "<div class=\"card neighbour\">\
+                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <div class=\"card-body\">\
+                    <h4 class=\"card-title\">" + neighbour.properties.GEN + "</h4>\
+                    <p class=\"card-text\">" + neighbour.properties.cases7_per_100k_txt + "</p>\
+                </div>\
+            </div>"
+            );
+        });
+    }
 }
+
+const asyncHandler = fn => (req, res, next) =>
+  Promise
+    .resolve(fn(req, res, next))
+    .catch(next)

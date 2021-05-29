@@ -4,7 +4,7 @@ class RKIFetcher {
 
     /*private String*/ static #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
     /*private String*/ #city;
-    /*List(Feature)*/ data;
+    /*List(Feature)*/ data = null;
     /*private LandkreisPictureQuery*/; #landkreisPictureQuery;
     /*private QueryResultRenderer*/ #queryResultRenderer;
     static incidency;
@@ -38,11 +38,16 @@ class RKIFetcher {
         RKIFetcher.incidency = Number.parseInt((RKIFetcher.storedData.map(landkreis => landkreis.properties.cases7_per_100k).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
     }
 
-    findNeighbourDistricts() {
+    async findNeighbourDistricts(data_) {
+        console.log(this.data);
+        if(!this.data) {
+            await this.getInformation();
+        }
+
         return RKIFetcher
-            .storedData
-            .sort(function(a,b) { return Math.abs(a.properties.OBJECTID - this.data.properties.OBJECTID) - Math.abs(b.properties.OBJECTID - this.data.properties.OBJECTID)})
-            .slice(0,5);
+                .storedData
+                .sort(function(a,b) { return Math.abs(a.properties.OBJECTID - data_.properties.OBJECTID) - Math.abs(b.properties.OBJECTID - data_.properties.OBJECTID)})
+                .slice(1, 6);
     }
 
     
@@ -98,6 +103,8 @@ class RKIFetcher {
 
         this.#queryResultRenderer.render(imageData, this.#city, this.data.properties);
         this.#queryResultRenderer.showRenderTarget();
+
+        this.#queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
     }
 
     static transformParameterToLandkreis() {

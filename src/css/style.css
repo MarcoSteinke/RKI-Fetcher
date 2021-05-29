@@ -76,10 +76,23 @@ body {
     margin-top: 80px;
 }
 
+.card-img-top {
+    height: 120px;
+}
+
+.card {
+    min-width: 130px;
+    min-height: 182px;
+}
+
 @media only screen and (max-width: 500px) {
 
     #landkreisImage {
         max-width: 80%;
+    }
+
+    .card-img-top {
+        height: 134px;
     }
 
     #RKITarget {
@@ -99,14 +112,14 @@ body {
     }
   }
 
-.hotspot {
+.hotspot, .neighbour {
     border-radius: 25px !important;
     height: 256;
     width: 256px;
     transition-duration: 0.3s;
 }
 
-.hotspot:hover {
+.hotspot:hover, .neighbour:hover {
     -webkit-box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57); 
     box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57);
     transform: translateY(-4px);
