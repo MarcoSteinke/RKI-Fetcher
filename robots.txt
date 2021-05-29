@@ -1,0 +1,5 @@
+Sitemap: https://qovis.steinke-it.com
+User-Agent: AdsBot-Google
+Allow:/
+User-Agent: *
+Allow:/
