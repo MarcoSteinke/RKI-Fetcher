@@ -47,6 +47,14 @@ class RKIFetcher {
             await this.getInformation();
         }
 
+        if(data_.properties.GEN == "Düsseldorf") {
+            RKIFetcher.storedData.forEach(feature => {
+                if(feature.properties.GEN == "Mettmann") {
+                    data_ = feature;
+                }
+            })
+        }
+
         return RKIFetcher
                 .storedData
                 .sort(function(a,b) { return Math.abs(a.properties.OBJECTID - data_.properties.OBJECTID) - Math.abs(b.properties.OBJECTID - data_.properties.OBJECTID)})
