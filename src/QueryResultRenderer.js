@@ -105,6 +105,68 @@ class QueryResultRenderer {
             );
         });
     }
+
+    async updateHotSpots(hotspots) {
+        const hotspotsHook = document.querySelector("#hotspots");
+
+        document.querySelectorAll(".hotspot").forEach(hotspot => hotspot.remove());
+
+        let pictures = [];
+
+        for(let i = 0; i < hotspots.length; i++) {
+            let pic = await LandkreisPictureQuery.requestPictureFromAPI(new LandkreisPictureQuery(hotspots[i].properties.GEN));
+            pictures.push(pic);
+        }
+
+        let iterator = 0;
+
+        hotspots.forEach(hotspot => {
+
+            let picture = pictures[iterator++];
+
+            hotspotsHook.insertAdjacentHTML(
+                "beforeend", 
+                "<div class=\"card hotspot\">\
+                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <div class=\"card-body\">\
+                    <h4 class=\"card-title\">" + hotspot.properties.GEN + "</h4>\
+                    <p class=\"card-text\">" + hotspot.properties.cases7_per_100k_txt + "</p>\
+                </div>\
+            </div>"
+            );
+        });
+    }
+
+    async updateSafest(safest) {
+        const safestHook = document.querySelector("#safest");
+
+        document.querySelectorAll(".safe").forEach(safe => safe.remove());
+
+        let pictures = [];
+
+        for(let i = 0; i < safest.length; i++) {
+            let pic = await LandkreisPictureQuery.requestPictureFromAPI(new LandkreisPictureQuery(safest[i].properties.GEN));
+            pictures.push(pic);
+        }
+
+        let iterator = 0;
+
+        safest.forEach(safe => {
+
+            let picture = pictures[iterator++];
+
+            safestHook.insertAdjacentHTML(
+                "beforeend", 
+                "<div class=\"card safe\">\
+                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <div class=\"card-body\">\
+                    <h4 class=\"card-title\">" + safe.properties.GEN + "</h4>\
+                    <p class=\"card-text\">" + safe.properties.cases7_per_100k_txt + "</p>\
+                </div>\
+            </div>"
+            );
+        });
+    }
 }
 
 const asyncHandler = fn => (req, res, next) =>

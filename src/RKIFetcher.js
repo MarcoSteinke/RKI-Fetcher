@@ -105,6 +105,8 @@ class RKIFetcher {
         this.#queryResultRenderer.showRenderTarget();
 
         this.#queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
+        this.#queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
+        this.#queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
     }
 
     static transformParameterToLandkreis() {

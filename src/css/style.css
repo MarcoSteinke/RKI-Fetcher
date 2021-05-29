@@ -109,17 +109,18 @@ body {
         width: 256px;
         margin: auto;
         margin-top: 24px;
+        display: block;
     }
   }
 
-.hotspot, .neighbour {
+.hotspot, .neighbour, .safe {
     border-radius: 25px !important;
     height: 256;
     width: 256px;
     transition-duration: 0.3s;
 }
 
-.hotspot:hover, .neighbour:hover {
+.hotspot:hover, .neighbour:hover, .safe:hover {
     -webkit-box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57); 
     box-shadow: 1px 2px 15px -1px rgba(0,0,0,0.57);
     transform: translateY(-4px);
