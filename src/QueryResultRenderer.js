@@ -49,7 +49,7 @@ class QueryResultRenderer {
 
         //
         document.querySelector("#landkreisImage").src = this.imageURL;
-        document.querySelector("#landkreisTitle").innerHTML = "Zeige Corona-Statistiken vom RKI an für " + city;
+        document.querySelector("#landkreisTitle").innerHTML = "Zeige Corona-Statistiken des RKI an für " + city;
 
         document.querySelector("#imageLabel").innerHTML = [imageData.user, imageData.page].join(", ");
         document.querySelector("#imageLabel").style.display = "block";
