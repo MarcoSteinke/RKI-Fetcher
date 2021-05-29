@@ -141,8 +141,9 @@ class QueryResultRenderer {
     static showCountryStatistics() {
         document.querySelector("#countryIncidency").innerHTML = "Inzidenz: " + RKIFetcher.incidency;
         document.querySelector("#countryCases").innerHTML = "Fälle: " + RKIFetcher.totalCases;
-        document.querySelector("#countryDeaths").innerHTML = "Todesfälle :" + RKIFetcher.totalDeaths;
+        document.querySelector("#countryDeaths").innerHTML = "Todesfälle: " + RKIFetcher.totalDeaths;
         document.querySelector("#countrySurvivalRate").innerHTML = "Überlebensrate: " + RKIFetcher.survivalRate;
+        document.querySelector("#countryCard").style.display = "block";
     }
 
     static async updateSafest(safest) {

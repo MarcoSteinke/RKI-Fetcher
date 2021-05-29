@@ -52,7 +52,7 @@ body {
     display: none;
 }
 
-#inputFormTitle, #apiTitle, #hotspotTitle, #safestTitle {
+#inputFormTitle, #apiTitle, #hotspotTitle, #safestTitle, #neiTitle {
     margin-top: 60px;
     margin-bottom: 24px;
     color: #007bff;
@@ -83,6 +83,10 @@ body {
 .card {
     min-width: 130px;
     min-height: 182px;
+}
+
+#country {
+    display: block !important;
 }
 
 @media only screen and (max-width: 500px) {
