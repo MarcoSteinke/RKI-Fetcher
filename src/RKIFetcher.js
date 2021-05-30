@@ -165,7 +165,6 @@ RKIFetcher.getAllLandkreiseAsObjects();
 
 async function waitForLandkreise() {
     landkreise = await new RKIFetcher().getAllLandkreise();
-    console.log(landkreise);
 
     /*landkreise.forEach(landkreis => {
         document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
