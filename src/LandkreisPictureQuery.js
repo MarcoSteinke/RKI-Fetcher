@@ -17,7 +17,7 @@ class LandkreisPictureQuery {
         
         if(!result) {
             console.log("Default picture presented by FotoArt-Treu, https://pixabay.com/photos/field-coupling-nature-meadow-4193125/");
-            return {url: "https://pixabay.com/get/g1967f234e2261c69cb19697486a0be30c7cd18a6dc560eb449df528c6607f3ad2db3ff524da07b82da5fd511df655a5c72fd915c3cb43fe7d15a9650910295bd_640.jpg", user: "FotoArt-Treu", page: "https:"};
+            return {url: "https://pixabay.com/get/gb91ce1bdc71e347e210d8d34d33127f5da2a18d00b87e195d3a29e461827013204db69cd9f8ec5348cd6f0b049bc32cd648ed79fcf9bdd1d42dd74ab8e7a0146_640.jpg", user: "scholty1970", page: "https://pixabay.com/photos/l%C3%BCbeck-holsten-gate-landmark-4081324/"};
         }
 
 

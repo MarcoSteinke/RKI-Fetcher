@@ -167,9 +167,12 @@ async function waitForLandkreise() {
     landkreise = await new RKIFetcher().getAllLandkreise();
     console.log(landkreise);
 
-    landkreise.forEach(landkreis => {
+    /*landkreise.forEach(landkreis => {
         document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
-    })
+    })*/
+        
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("landkreis"), landkreise);
 
     QueryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
     QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
