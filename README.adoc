@@ -14,34 +14,15 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 
 3️⃣ `SHARE` the information with your friends, family or coworkers
 
-## 🔧 Usage:
-
-Add the following line to your HTML:
-
-```html
-<script src="cdn.bestofcode.net/rkifetch"></script>
-```
-
-Instantiate a new RKIFetcher:
-
-```javascript 
-const rkiFetcher = new RKIFetcher();
-```
-
-You have the following options to manipulate the instance during instantiation:
-
-```javascript
-const rkiFetcher = new RKIFetcher({city: "Düsseldorf", mode: "detailed"})
-```
-
 There are several other options to use (in the future).
 
 ## Future features:
 
-* [ ] current Corona Hotspots
-* [ ] current safest districts
-* [ ] n closest districts
-* [ ] frontend rendering component
+* [x] current Corona Hotspots
+* [x] current safest districts
+* [x] n closest districts
+* [x] frontend rendering component
+* [ ] Server which will cache the most recent data for much faster loading times
 
 ## ⚖ License:
 
