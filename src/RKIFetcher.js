@@ -2,37 +2,37 @@
 
 class RKIFetcher {
 
-    /*private String*/ static #api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
-    /*private String*/ #city;
+    /*private String*/ static api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
+    /*private String*/ city;
     /*List(Feature)*/ data = null;
-    /*private LandkreisPictureQuery*/; #landkreisPictureQuery;
-    /*private QueryResultRenderer*/ #queryResultRenderer;
+    /*private LandkreisPictureQuery*/; landkreisPictureQuery;
+    /*private QueryResultRenderer*/ queryResultRenderer;
     static incidency;
     static totalCases;
     static totalDeaths;
     static survivalRate;
     static storedData = [];
-    #cards = document.querySelectorAll(".card");
+    cards = document.querySelectorAll(".card");
 
     constructor(city) {
         if(city) {
-            this.#city = city;
+            this.city = city;
         }
         document.querySelector("#landkreis").addEventListener("click", function(e) {
             e.target.value = "";
             e.target.click();
         })
-        this.#landkreisPictureQuery = new LandkreisPictureQuery(city);
-        this.#cards.forEach(card => card.style.display = "none");
-        this.#queryResultRenderer = new QueryResultRenderer(document.querySelector("#RKITarget"));
-        this.#queryResultRenderer.hideRenderTarget();
+        this.landkreisPictureQuery = new LandkreisPictureQuery(city);
+        this.cards.forEach(card => card.style.display = "none");
+        this.queryResultRenderer = new QueryResultRenderer(document.querySelector("#RKITarget"));
+        this.queryResultRenderer.hideRenderTarget();
     }
 
 
 
     async getAllLandkreise() {
         const landkreise = [];
-        await fetch(RKIFetcher.#api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+        await fetch(RKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
 
         return landkreise;
     }
@@ -64,7 +64,7 @@ class RKIFetcher {
     
     static async getAllLandkreiseAsObjects() {
         if(RKIFetcher.storedData.length < 1) {
-            await fetch(RKIFetcher.#api)
+            await fetch(RKIFetcher.api)
                 .then(res => res.json())
                 .then(json => json.features.forEach(feature => this.storedData.push(feature)));
         }
@@ -76,8 +76,8 @@ class RKIFetcher {
     }
 
     async getInformation() {
-        await fetch(RKIFetcher.#api).then(res => res.json()).then(json => json.features.forEach(feature => {
-          if(feature.properties.GEN == this.#city) {
+        await fetch(RKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
+          if(feature.properties.GEN == this.city) {
             this.data = feature;
             console.log(this.data);
             window.location.href = window.location.href.split("?")[0] + "?share=" + RKIFetcher.landkreisToURL(feature.properties.GEN);
@@ -125,14 +125,14 @@ class RKIFetcher {
 
     async displayResult() {
         if(!this.data) await this.getInformation();
-        const imageData = await LandkreisPictureQuery.requestPictureFromAPI(this.#landkreisPictureQuery);
+        const imageData = await LandkreisPictureQuery.requestPictureFromAPI(this.landkreisPictureQuery);
 
-        this.#queryResultRenderer.render(imageData, this.#city, this.data.properties);
-        this.#queryResultRenderer.showRenderTarget();
+        this.queryResultRenderer.render(imageData, this.city, this.data.properties);
+        this.queryResultRenderer.showRenderTarget();
 
-        this.#queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
-        //this.#queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
-        //this.#queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
+        this.queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
+        //this.queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
+        //this.queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
     }
 
     static transformParameterToLandkreis() {
@@ -155,7 +155,7 @@ class RKIFetcher {
     }
 
     getAPIUrl() {
-        return RKIFetcher.#api;
+        return RKIFetcher.api;
     }
 }
 
@@ -165,11 +165,13 @@ RKIFetcher.getAllLandkreiseAsObjects();
 
 async function waitForLandkreise() {
     landkreise = await new RKIFetcher().getAllLandkreise();
-    console.log(landkreise);
 
-    landkreise.forEach(landkreis => {
+    /*landkreise.forEach(landkreis => {
         document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
-    })
+    })*/
+        
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("landkreis"), landkreise);
 
     QueryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
     QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
