@@ -23,6 +23,7 @@ There are several other options to use (in the future).
 * [x] n closest districts
 * [x] frontend rendering component
 * [ ] Server which will cache the most recent data for much faster loading times
+* [ ] load a default picture per day
 
 ## ⚖ License:
 
