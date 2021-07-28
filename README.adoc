@@ -14,6 +14,14 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 
 3️⃣ `SHARE` the information with your friends, family or coworkers
 
+## ⚡️ Demo:
+
+---
+
+Try `qovis` by clicking https://www.bestofcode.net/Applications/qovis/[here!]
+
+---
+
 ## 🔧 Usage:
 
 Add the following line to your HTML:
