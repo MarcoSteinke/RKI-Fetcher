@@ -54,10 +54,10 @@ class QueryResultRenderer {
         document.querySelector("#imageLabel").innerHTML = [imageData.user, imageData.page].join(", ");
         document.querySelector("#imageLabel").style.display = "block";
 
-        document.body.style.background = "url(" + this.imageURL + ")";
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundAttachment = "fixed";
+        //document.body.style.background = "url(" + this.imageURL + ")";
+        //document.body.style.backgroundRepeat = "no-repeat";
+        //document.body.style.backgroundSize = "cover";
+        //document.body.style.backgroundAttachment = "fixed";
 
         document.querySelector("#landkreisResultName").innerHTML = city;
         document.querySelector("#landkreisResultAnnotation").innerHTML = data.BEZ;

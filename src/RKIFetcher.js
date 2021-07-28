@@ -131,6 +131,7 @@ class RKIFetcher {
         this.queryResultRenderer.showRenderTarget();
 
         this.queryResultRenderer.updateNeighbours(await this.findNeighbourDistricts(this.data));
+        dialog.modal('hide');
         //this.queryResultRenderer.updateHotSpots(RKIFetcher.findHotspots());
         //this.queryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
     }
@@ -165,6 +166,7 @@ RKIFetcher.getAllLandkreiseAsObjects();
 
 async function waitForLandkreise() {
     landkreise = await new RKIFetcher().getAllLandkreise();
+    console.log(landkreise);
 
     /*landkreise.forEach(landkreis => {
         document.querySelector("#landkreise").insertAdjacentHTML("beforeend", "<option value=\"" + landkreis + "\">");
@@ -177,4 +179,6 @@ async function waitForLandkreise() {
     QueryResultRenderer.updateSafest(RKIFetcher.findSafestAreas());
 
     QueryResultRenderer.showCountryStatistics();
+
+    dialog.modal('hide');
 }
