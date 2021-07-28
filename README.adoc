@@ -36,12 +36,16 @@ const rkiFetcher = new RKIFetcher({city: "Düsseldorf", mode: "detailed"})
 
 There are several other options to use (in the future).
 
-## Future features:
+## Roadmap:
 
-* [ ] current Corona Hotspots
-* [ ] current safest districts
-* [ ] n closest districts
-* [ ] frontend rendering component
+* [x] current Corona Hotspots
+* [x] current safest districts
+* [x] n closest districts
+* [x] frontend rendering component
+* [ ] prefetch data every 6 hours
+* [ ] show news after loading a district
+* [ ] show what is allowed or not after loading a district
+
 
 ## ⚖ License:
 
