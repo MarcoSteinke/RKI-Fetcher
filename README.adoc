@@ -1,4 +1,4 @@
-# 📈 RKI Fetcher
+# 📈 QOVIS
 
 ## Current statistics, fast and simple.
 
