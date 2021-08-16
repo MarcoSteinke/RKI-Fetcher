@@ -53,8 +53,12 @@ There are several other options to use (in the future).
 * [ ] prefetch data every 6 hours
 * [ ] show news after loading a district
 * [ ] show what is allowed or not after loading a district
+
+## Current fixes:
+
 * [ ] Add validation to render component
 * [ ] Make validation reload the page on error
+* [ ] Add default image if an image could not be loaded
 
 
 ## ⚖ License:
