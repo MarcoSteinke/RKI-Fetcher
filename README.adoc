@@ -1,4 +1,4 @@
-# 📈 QOVIS
+# 📈 RKI Fetcher
 
 ## Current statistics, fast and simple.
 
@@ -13,14 +13,6 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 2️⃣ `CHECK` the latest information about your surrounding
 
 3️⃣ `SHARE` the information with your friends, family or coworkers
-
-## ⚡️ Demo:
-
----
-
-Try `qovis` by clicking https://www.bestofcode.net/Applications/qovis/[here!]
-
----
 
 ## 🔧 Usage:
 
@@ -44,22 +36,12 @@ const rkiFetcher = new RKIFetcher({city: "Düsseldorf", mode: "detailed"})
 
 There are several other options to use (in the future).
 
-## Roadmap:
+## Future features:
 
-* [x] current Corona Hotspots
-* [x] current safest districts
-* [x] n closest districts
-* [x] frontend rendering component
-* [ ] prefetch data every 6 hours
-* [ ] show news after loading a district
-* [ ] show what is allowed or not after loading a district
-
-## Current fixes:
-
-* [ ] Add validation to render component
-* [ ] Make validation reload the page on error
-* [ ] Add default image if an image could not be loaded
-
+* [ ] current Corona Hotspots
+* [ ] current safest districts
+* [ ] n closest districts
+* [ ] frontend rendering component
 
 ## ⚖ License:
 
