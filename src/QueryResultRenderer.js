@@ -97,7 +97,7 @@ class QueryResultRenderer {
             neighboursHook.insertAdjacentHTML(
                 "beforeend", 
                 "<div class=\"card neighbour\" onclick=\"update(\'" + neighbour.properties.GEN + "\')\">\
-                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <img onError=\"this.onerror=null;this.src='src/css/background.jpg';\" class=\"card-img-top\" src=\"" + picture.url + "\">\
                 <div class=\"card-body\">\
                     <h4 class=\"card-title\">" + neighbour.properties.GEN + "</h4>\
                     <p class=\"card-text\">" + neighbour.properties.cases7_per_100k_txt + "</p>\
@@ -128,7 +128,7 @@ class QueryResultRenderer {
             hotspotsHook.insertAdjacentHTML(
                 "beforeend", 
                 "<div class=\"card hotspot\" onclick=\"update(\'" + hotspot.properties.GEN + "\')\">\
-                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <img onError=\"this.onerror=null;this.src='src/css/background.jpg';\" class=\"card-img-top\" src=\"" + picture.url + "\">\
                 <div class=\"card-body\">\
                     <h4 class=\"card-title\">" + hotspot.properties.GEN + "</h4>\
                     <p class=\"card-text\">" + hotspot.properties.cases7_per_100k_txt + "</p>\
@@ -167,7 +167,7 @@ class QueryResultRenderer {
             safestHook.insertAdjacentHTML(
                 "beforeend", 
                 "<div class=\"card safe\" onclick=\"update(\'" + safe.properties.GEN + "\')\">\
-                <img class=\"card-img-top\" src=\"" + picture.url + "\">\
+                <img onError=\"this.onerror=null;this.src='src/css/background.jpg';\" class=\"card-img-top\" src=\"" + picture.url + "\">\
                 <div class=\"card-body\">\
                     <h4 class=\"card-title\">" + safe.properties.GEN + "</h4>\
                     <p class=\"card-text\">" + safe.properties.cases7_per_100k_txt + "</p>\
