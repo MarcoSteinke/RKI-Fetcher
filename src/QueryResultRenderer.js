@@ -145,6 +145,7 @@ class QueryResultRenderer {
     }
 
     static showCountryStatistics() {
+        if(!(RKIFetcher.incidency || RKIFetcher.totalCases || RKIFetcher.totalDeaths || RKIFetcher.survivalRate)) window.reload();
         document.querySelector("#countryIncidency").innerHTML = "Inzidenz: " + RKIFetcher.incidency;
         document.querySelector("#countryCases").innerHTML = "Fälle: " + RKIFetcher.totalCases;
         document.querySelector("#countryDeaths").innerHTML = "Todesfälle: " + RKIFetcher.totalDeaths;
