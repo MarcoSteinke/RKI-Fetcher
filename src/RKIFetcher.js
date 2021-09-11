@@ -180,5 +180,5 @@ async function waitForLandkreise() {
 
     QueryResultRenderer.showCountryStatistics();
 
-    dialog.modal('hide');
+    dialog.modal('hide'); 
 }
