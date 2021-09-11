@@ -107,7 +107,7 @@ class RKIFetcher {
     }
 
     static calculateAverageSurvivalRate() {
-        return Number.parseInt((RKIFetcher.storedData.map(landkreis => (Number.parseInt((100 - landkreis.properties.death_rate) * 100) / 100)).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
+        return Number.parseInt((RKIFetcher.storedData.map(landkreis => (Number.parseInt((landkreis.properties.death_rate) * 100) / 100)).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
     }
 
     static findSafestAreas() {

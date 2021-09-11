@@ -77,7 +77,7 @@ class QueryResultRenderer {
 
         document.querySelector("#totalcases").innerHTML = "Fälle: " + data.cases;
         document.querySelector("#totalcases100k").innerHTML = "Todesfälle: " + data.deaths;
-        document.querySelector("#totaldeaths").innerHTML = "Überlebensrate: " +  (Number.parseInt((100 - data.death_rate) * 100) / 100) + "%" ;
+        document.querySelector("#totaldeaths").innerHTML = "Sterberate: " +  (Number.parseInt((data.death_rate) * 100) / 100) + "%" ;
         document.querySelector("#showAfterwards").style.display = "block";
         
     }
@@ -149,7 +149,7 @@ class QueryResultRenderer {
         document.querySelector("#countryIncidency").innerHTML = "Inzidenz: " + RKIFetcher.incidency;
         document.querySelector("#countryCases").innerHTML = "Fälle: " + RKIFetcher.totalCases;
         document.querySelector("#countryDeaths").innerHTML = "Todesfälle: " + RKIFetcher.totalDeaths;
-        document.querySelector("#countrySurvivalRate").innerHTML = "Überlebensrate: " + RKIFetcher.survivalRate + '%';
+        document.querySelector("#countrySurvivalRate").innerHTML = "Sterberate: " + RKIFetcher.survivalRate + '%';
         document.querySelector("#countryCard").style.display = "block";
     }
 
