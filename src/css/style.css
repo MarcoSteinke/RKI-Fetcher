@@ -51,6 +51,7 @@ body {
 
 #shareAndAPI {
     display: none;
+    margin-top: 48px;
 }
 
 #imageLabel {
@@ -155,6 +156,19 @@ body {
 
 #RKITarget, #apiReturnTitle {
     display: none;
+}
+
+#main-statistic-display {
+    display: none;
+}
+
+#main-statistic-display>*>.col {
+    padding-top: 48px;
+    padding-bottom: 24px;
+}
+
+.main-value {
+    font-size: 4rem;
 }
 
 .pulse {

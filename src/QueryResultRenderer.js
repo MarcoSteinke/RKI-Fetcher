@@ -51,6 +51,12 @@ class QueryResultRenderer {
         document.querySelector("#landkreisImage").src = this.imageURL;
         document.querySelector("#landkreisTitle").innerHTML = "Zeige Corona-Statistiken des RKI an für " + city;
 
+        document.querySelector("#main-statistic-display").style.display = "block";
+        document.querySelector("#main-statistic-display").style.marginTop = "20px";
+
+        document.querySelector("#main-incidency-display").innerHTML = data.cases7_per_100k_txt;
+        document.querySelector("#main-cases-display").innerHTML = data.cases7_lk;
+
         document.querySelector("#imageLabel").innerHTML = [imageData.user, imageData.page].join(", ");
         document.querySelector("#imageLabel").style.display = "block";
 
