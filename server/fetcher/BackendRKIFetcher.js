@@ -1,6 +1,8 @@
 // TODO: Add visual output!
 
-class RKIFetcher {
+let LandkreisPictureQuery = require("./LandkreisPictureQuery.js");
+
+class BackendRKIFetcher {
 
     /*private String*/ static api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
     /*private String*/ city;
@@ -12,7 +14,6 @@ class RKIFetcher {
     static totalDeaths;
     static survivalRate;
     static storedData = [];
-    cards = document.querySelectorAll(".card");
 
     constructor(city) {
         if(city) {
@@ -26,34 +27,34 @@ class RKIFetcher {
 
     async getAllLandkreise() {
         const landkreise = [];
-        await fetch(RKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+        await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
 
         return landkreise;
     }
 
     static calculateIncidency() {
-        RKIFetcher.incidency = Number.parseInt((RKIFetcher.storedData.map(landkreis => landkreis.properties.cases7_per_100k).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
+        BackendRKIFetcher.incidency = Number.parseInt((BackendRKIFetcher.storedData.map(landkreis => landkreis.properties.cases7_per_100k).reduce((a,b) => a+b) / BackendRKIFetcher.storedData.length) * 10) / 10
     }
     
     static async getAllLandkreiseAsObjects() {
-        if(RKIFetcher.storedData.length < 1) {
-            await fetch(RKIFetcher.api)
+        if(BackendRKIFetcher.storedData.length < 1) {
+            await fetch(BackendRKIFetcher.api)
                 .then(res => res.json())
                 .then(json => json.features.forEach(feature => this.storedData.push(feature)));
         }
 
-        RKIFetcher.calculateIncidency();
-        RKIFetcher.totalCases = RKIFetcher.calculateTotalCases();
-        RKIFetcher.totalDeaths = RKIFetcher.calculateTotalDeaths();
-        RKIFetcher.survivalRate = RKIFetcher.calculateAverageSurvivalRate();
+        BackendRKIFetcher.calculateIncidency();
+        BackendRKIFetcher.totalCases = BackendRKIFetcher.calculateTotalCases();
+        BackendRKIFetcher.totalDeaths = BackendRKIFetcher.calculateTotalDeaths();
+        BackendRKIFetcher.survivalRate = BackendRKIFetcher.calculateAverageSurvivalRate();
     }
 
     async getInformation() {
-        await fetch(RKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
+        await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
           if(feature.properties.GEN == this.city) {
             this.data = feature;
             console.log(this.data);
-            window.location.href = window.location.href.split("?")[0] + "?share=" + RKIFetcher.landkreisToURL(feature.properties.GEN);
+            window.location.href = window.location.href.split("?")[0] + "?share=" + BackendRKIFetcher.landkreisToURL(feature.properties.GEN);
           }
         }))
     }
@@ -68,23 +69,23 @@ class RKIFetcher {
     }
 
     static findHotspots() {
-        return RKIFetcher.storedData.sort(function(a,b) { return b.properties.cases7_per_100k - a.properties.cases7_per_100k }).slice(0,5);
+        return BackendRKIFetcher.storedData.sort(function(a,b) { return b.properties.cases7_per_100k - a.properties.cases7_per_100k }).slice(0,5);
     }
 
     static calculateTotalCases() {
-        return RKIFetcher.storedData.map(landkreis => landkreis.properties.cases).reduce((a,b) => a+b)
+        return BackendRKIFetcher.storedData.map(landkreis => landkreis.properties.cases).reduce((a,b) => a+b)
     }
 
     static calculateTotalDeaths() {
-        return RKIFetcher.storedData.map(landkreis => landkreis.properties.deaths).reduce((a,b) => a+b)
+        return BackendRKIFetcher.storedData.map(landkreis => landkreis.properties.deaths).reduce((a,b) => a+b)
     }
 
     static calculateAverageSurvivalRate() {
-        return Number.parseInt((RKIFetcher.storedData.map(landkreis => (Number.parseInt((100 - landkreis.properties.death_rate) * 100) / 100)).reduce((a,b) => a+b) / RKIFetcher.storedData.length) * 10) / 10
+        return Number.parseInt((BackendRKIFetcher.storedData.map(landkreis => (Number.parseInt((100 - landkreis.properties.death_rate) * 100) / 100)).reduce((a,b) => a+b) / BackendRKIFetcher.storedData.length) * 10) / 10
     }
 
     static findSafestAreas() {
-        return RKIFetcher.storedData.sort(function(a,b) { return a.properties.cases7_per_100k - b.properties.cases7_per_100k }).slice(0,5);
+        return BackendRKIFetcher.storedData.sort(function(a,b) { return a.properties.cases7_per_100k - b.properties.cases7_per_100k }).slice(0,5);
     }
 
     static URLToLandkreis(landkreis) {
@@ -97,10 +98,12 @@ class RKIFetcher {
     }
 
     getAPIUrl() {
-        return RKIFetcher.api;
+        return BackendRKIFetcher.api;
     }
 }
 
 let landkreise = [];
 
-RKIFetcher.getAllLandkreiseAsObjects();
+BackendRKIFetcher.getAllLandkreiseAsObjects();
+
+module.exports = BackendRKIFetcher;
