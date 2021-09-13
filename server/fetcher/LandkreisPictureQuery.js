@@ -2,7 +2,7 @@ class LandkreisPictureQuery {
 
     /*String*/ landkreis;
     /*String*/ static apiRequestURL = "https://pixabay.com/api/";
-    /*String (devToken)*/ static apiRequestToken = "18455198-2cc93b5bfbf3e988d656de091";
+    /*String */ static apiRequestToken = "18455198-2cc93b5bfbf3e988d656de091";
 
     constructor(landkreis) {
         this.landkreis = landkreis;
