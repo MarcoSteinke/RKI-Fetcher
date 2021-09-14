@@ -2,7 +2,7 @@
 
 let LandkreisPictureQuery = require("./LandkreisPictureQuery.js");
 
-class BackendRKIFetcher {
+module.exports = class BackendRKIFetcher {
 
     /*private String*/ static api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
     /*private String*/ city;
@@ -14,6 +14,7 @@ class BackendRKIFetcher {
     static totalDeaths;
     static survivalRate;
     static storedData = [];
+    static fetch = ({ default: fetch } = import('node-fetch'));
 
     constructor(city) {
         if(city) {
@@ -27,7 +28,11 @@ class BackendRKIFetcher {
 
     async getAllLandkreise() {
         const landkreise = [];
-        await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+        try {
+            await BackendRKIFetcher.fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+        } catch(e) {
+            console.log(e);
+        }
 
         return landkreise;
     }
@@ -38,7 +43,7 @@ class BackendRKIFetcher {
     
     static async getAllLandkreiseAsObjects() {
         if(BackendRKIFetcher.storedData.length < 1) {
-            await fetch(BackendRKIFetcher.api)
+            await BackendRKIFetcher.fetch(BackendRKIFetcher.api)
                 .then(res => res.json())
                 .then(json => json.features.forEach(feature => this.storedData.push(feature)));
         }
@@ -50,7 +55,7 @@ class BackendRKIFetcher {
     }
 
     async getInformation() {
-        await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
+        await BackendRKIFetcher.fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
           if(feature.properties.GEN == this.city) {
             this.data = feature;
             console.log(this.data);
@@ -101,9 +106,3 @@ class BackendRKIFetcher {
         return BackendRKIFetcher.api;
     }
 }
-
-let landkreise = [];
-
-BackendRKIFetcher.getAllLandkreiseAsObjects();
-
-module.exports = BackendRKIFetcher;

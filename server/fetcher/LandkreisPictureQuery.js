@@ -10,7 +10,7 @@ class LandkreisPictureQuery {
 
     static async requestPictureFromAPI(query) {
         let result = null;
-        await fetch([this.apiRequestURL, ["key=" + this.apiRequestToken, "q=" + query.landkreis].join("&")].join("?"))
+        await fetch([this.apiRequestURL, ["key=" + this.apiRequestToken, "q=" + query.landkreis].join("&")].join("?")).catch(() => console.log("wrong request"))
             .then(res => res.json())
             .then(json => result = (json.totalHits > 0) ? json.hits : null);
 
