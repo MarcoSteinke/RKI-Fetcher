@@ -30,4 +30,8 @@ app.get('/safest', SessionManager.asyncMiddleware(async (req, res, next) => {
     res.send(JSON.stringify(BackendRKIFetcher.findSafestAreas()));
 }));
 
+app.get('*', (req, res) => {
+    res.send("Error: This is not a valid hook for this API!");
+});
+
 app.listen(port, () => console.log(`${__filename} accessible from port ${port}!`));
