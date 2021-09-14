@@ -1,15 +1,9 @@
 const express = require('express');
 const app = express()
 const port = 3000
-
 const SIX_HOURS = 6 * 3600 * 1000;
-
 const BackendRKIFetcher = require("./fetcher/BackendRKIFetcher.js");
-
 const SessionManager = require("./web/SessionManager.js");
-
-let i = 1;
-let content = [];
 
 async function prepareData() {
     BackendRKIFetcher.storedData = [];
@@ -36,4 +30,4 @@ app.get('/safest', SessionManager.asyncMiddleware(async (req, res, next) => {
     res.send(JSON.stringify(BackendRKIFetcher.findSafestAreas()));
 }));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`${__filename} accessible from port ${port}!`));
