@@ -1,6 +1,8 @@
 // TODO: Add visual output!
 
 let LandkreisPictureQuery = require("./LandkreisPictureQuery.js");
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+exports.fetch = fetch;
 
 module.exports = class BackendRKIFetcher {
 
@@ -14,7 +16,6 @@ module.exports = class BackendRKIFetcher {
     static totalDeaths;
     static survivalRate;
     static storedData = [];
-    static fetch = ({ default: fetch } = import('node-fetch'));
 
     constructor(city) {
         if(city) {
@@ -29,7 +30,7 @@ module.exports = class BackendRKIFetcher {
     async getAllLandkreise() {
         const landkreise = [];
         try {
-            await BackendRKIFetcher.fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
+            await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => landkreise.push(feature.properties.GEN)));
         } catch(e) {
             console.log(e);
         }
@@ -43,7 +44,7 @@ module.exports = class BackendRKIFetcher {
     
     static async getAllLandkreiseAsObjects() {
         if(BackendRKIFetcher.storedData.length < 1) {
-            await BackendRKIFetcher.fetch(BackendRKIFetcher.api)
+            await fetch(BackendRKIFetcher.api)
                 .then(res => res.json())
                 .then(json => json.features.forEach(feature => this.storedData.push(feature)));
         }
@@ -55,7 +56,7 @@ module.exports = class BackendRKIFetcher {
     }
 
     async getInformation() {
-        await BackendRKIFetcher.fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
+        await fetch(BackendRKIFetcher.api).then(res => res.json()).then(json => json.features.forEach(feature => {
           if(feature.properties.GEN == this.city) {
             this.data = feature;
             console.log(this.data);
