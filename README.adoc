@@ -2,7 +2,7 @@
 
 ## Current statistics, fast and simple.
 
-image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/src/css/image/screenshot.png[width=800]
+image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/frontend/src/css/image/screenshot.png[width=800]
 
 ## 🔥 Introduction:
 
