@@ -2,11 +2,11 @@
 
 class RKIFetcher {
 
-    /*private String*/ static api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
-    /*private String*/ city;
-    /*List(Feature)*/ data = null;
-    /*private LandkreisPictureQuery*/; landkreisPictureQuery;
-    /*private QueryResultRenderer*/ queryResultRenderer;
+    static api = "https://opendata.arcgis.com/datasets/917fc37a709542548cc3be077a786c17_0.geojson";
+    city;
+    data = null;
+    landkreisPictureQuery;
+    queryResultRenderer;
     static incidency;
     static totalCases;
     static totalDeaths;
