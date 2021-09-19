@@ -2,7 +2,7 @@
 
 ## Current statistics, fast and simple.
 
-image::https://raw.githubusercontent.com/MarcoSteinke/RKI-Fetcher/main/frontend/src/css/image/screenshot.png[width=800]
+
 
 ## 🔥 Introduction:
 
@@ -14,7 +14,43 @@ A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut
 
 3️⃣ `SHARE` the information with your friends, family or coworkers
 
-## Future features:
+## 📷 Screenshots:
+
+### Landing Page:
+
+The following screenshots shows the landing page of the qovis tool. You can either choose your district or look at the Covid-19 statistics in Germany.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/main.PNG?raw=true[]
+
+### Germany Statistics:
+
+In the Germany statistics you will find the current hotspots and safest districts in Germany. You will also find this information on every search page.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/statis.PNG?raw=true[]
+
+### Autocomplete:
+
+If you want to start searching for a district, qovis will support you with autocomplete in the search bar.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/autocomplete.PNG?raw=true[]
+
+### District Statistics:
+
+After choosing your district, you will be redirected to a page where you can see a photo taken in the district you were looking for and you will also find the current incidency and amount of cases and also different statistics which are useful to find out the development of the numbers you were seeing.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/town.PNG?raw=true[]
+
+### Neighbouring districts:
+
+After a district was selected you can directly go to the neighbouring districts by clicking them.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/neighbours.PNG?raw=true[]
+
+### Sharing:
+
+You can also share the current statistics page with your friends, family or coworkers by using the "Teilen" button.
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/share.PNG?raw=true[]
 
 ## ⚖ License:
 
