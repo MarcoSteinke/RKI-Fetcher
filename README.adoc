@@ -52,6 +52,10 @@ You can also share the current statistics page with your friends, family or cowo
 
 image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/share.PNG?raw=true[]
 
+### Fully mobile responsive:
+
+image::https://github.com/MarcoSteinke/qovis-RKI-statistics/blob/main/screenshots/mobile.PNG?raw=true[]
+
 ## ⚖ License:
 
 MarcoSteinke/RKI-Fetcher is licensed under the MIT License
