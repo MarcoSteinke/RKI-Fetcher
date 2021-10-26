@@ -6,6 +6,8 @@
 
 ## 🔥 Introduction:
 
+Try it: https://qovis.steinke-it.com !
+
 A very simple fetcher for COVID19 statistics offered by the Robert-Koch-Institut (RKI) in Germany. 
 
 1️⃣ `SELECT` your district
